@@ -5,7 +5,16 @@ import time
 
 
 def get_prediction():
-    TIMER = 3
+    '''
+    This function translates the sign the user is doing to the camera into a choice of rock, paper or scissors.
+
+    The purpose of this function is to capture the input from the user using the camera of the computer.
+    The user needs to press the key 'w' to start the three second count down. After the count down is over the user
+    needs to show to the camera their choice in the form of a rock, a paper or a scissor. When done the user
+    needs to press the "q" key to stop the video recording. The function will then pic the choice with biggest
+    probability from the last array and convert it into the relevant choice (rock, paper, scissors or nothing).
+    '''
+    TIMER = 5
     model = load_model('keras_model.h5', compile=False)
     cap = cv2.VideoCapture(0)
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
@@ -17,6 +26,12 @@ def get_prediction():
         normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
         data[0] = normalized_image
         prediction = model.predict(data)
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        org = (0, 450)
+        fontScale = 0.6
+        color = (4, 4, 183)
+        thickness = 2
+        cv2.putText(frame, "Press the 'w' key to start the countdown and 'q' to exit", org, font, fontScale, color, thickness, cv2.LINE_AA)
         cv2.imshow('frame', frame)
 
         k = cv2.waitKey(1)
@@ -25,10 +40,10 @@ def get_prediction():
             while TIMER >= 0:
                 ret, frame = cap.read()
                 font = cv2.FONT_HERSHEY_SIMPLEX
-                org = (50, 50)
-                fontScale = 1
+                org = (250, 250)
+                fontScale = 7
                 color = (255, 0, 0)
-                thickness = 2
+                thickness = 4
                 cv2.putText(frame, str(TIMER), org, font, fontScale, color, thickness, cv2.LINE_AA)
                 cv2.imshow('frame', frame)
                 cv2.waitKey(1)
@@ -60,6 +75,6 @@ def get_prediction():
         user_input = "nothing"
     return user_input
 
-print(get_prediction())
+# print(get_prediction())
 
 
