@@ -20,3 +20,11 @@
 - The function `get_prediction` starts the camera and tells the user if the press the 'w' key the countdown will start for them to show their input to the camera and when they are happy with the input they can press 'q' to exit the while loop and close the camera. Then the function pics the highest probability in the last array and based in the index of that max value it translate it to rock, paper, scissors or anything.
 - I modified the function `get_winner` to add a point to either the user or the computer, depending who won the round.
 - Finally, inside a while loop, the function `play` runs until either the user or the computer has 3 points.
+
+## Milestone 4
+
+- In this milestone I created a new folder named OOP_try and re wrote the code using OOP.
+- The game works the same but it has improved readability.
+- I created three classes. One for the user that opens the camera a translate the sign into either Rock, Paper or Scissors.
+Another class for the computer that picks randomly one option between Rock, Paper or Scissors and a score class that keeps track of the score after each round.
+- Finally, the game is played in the `game_logic_OOP` file.
