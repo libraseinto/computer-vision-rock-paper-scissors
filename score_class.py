@@ -119,28 +119,11 @@ class Scoreboard:
         scenario, and determines who is the winner of the round. This function prints if the user
         won, lost or it is a tie and it will add a point to the winner. The function does not return anything.
         '''
-
-        if computer_choice == "rock" and user_choice == "scissors":
+        if computer_choice == user_choice:
+            print("It is a tie!")
+        elif computer_choice == "rock" and user_choice == "scissors" or computer_choice == "paper" and user_choice == "rock" or computer_choice == "scissors" and user_choice == "paper":
             print("You lost!")
             self.computer_wins += 1
-        elif computer_choice == "rock" and user_choice == "paper":
+        elif computer_choice == "rock" and user_choice == "paper" or computer_choice == "paper" and user_choice == "scissors" or computer_choice == "scissors" and user_choice == "rock":
             print("You won!")
             self.user_wins += 1
-        elif computer_choice == "rock" and user_choice == "rock":
-            print("It is a tie!")
-        elif computer_choice == "paper" and user_choice == "scissors":
-            print("You won!")
-            self.user_wins += 1
-        elif computer_choice == "paper" and user_choice == "paper":
-            print("It is a tie!")
-        elif computer_choice == "paper" and user_choice == "rock":
-            print("You lost!")
-            self.computer_wins += 1
-        elif computer_choice == "scissors" and user_choice == "rock":
-            print("You won!")
-            self.user_wins += 1
-        elif computer_choice == "scissors" and user_choice == "paper":
-            print("You lost!")
-            self.computer_wins += 1
-        elif computer_choice == "scissors" and user_choice == "scissors":
-            print("It is a tie!")
