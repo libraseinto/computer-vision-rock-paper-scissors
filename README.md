@@ -18,14 +18,14 @@ If you are not familiar with the game, you can read about it here: https://en.wi
 
 ## Documentation
 
-There is only one class in this program that contains several methods. Those methods and the class are listed below:
+### 1. The files:
+This repository contains several files:
+1. `game_logic_OOP.py`: Runs the game.
+2. `score_class.py`: Contains the class with the necessary attributes and methods for the code to work.
+3. `keras.model.h5`: Contains the code that converts the user input into the camera into a string
+4. `labels.txt`: Contains the possible options for the user: Rock, Paper, Scissors or Nothing
+5.`README.md`: This file which contains all the explanation for the code.
 
-### 1. How to initialize a `Scoreboard` object to start the game
-
-```
-score = Scoreboard()
-```
-This will create the object for you. This class has the user score and the computer score as initializers, named `user_wins` and `computer_wins`, respectively. This object will track the score in the game to determine the winner.
 
 ### 2. Modules used:
 
@@ -36,7 +36,18 @@ This program uses different modules, briefly explained below:
 4. numpy:  is a python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more. You can find more information [here](https://numpy.org/doc/stable/#)
 5. time: this module provides various time-related functions. You can find more information [here](https://docs.python.org/3/library/time.html)
 
-### 3. Method 1: `get_prediction`
+### 3. How to initialize a `Scoreboard` object to start the game
+
+There is only one class in this program that contains several methods. Those methods and the class are listed below:
+
+```
+score = Scoreboard()
+```
+
+This will create the object for you. This class has the user score and the computer score as initializers, named `user_wins` and `computer_wins`, respectively. This object will track the score in the game to determine the winner.
+
+
+### 4. Method 1: `get_prediction`
 
 When this method is called it opens the user's webcam and displays a message to the user, to press `w` to start the countdown and to pres `q` to exit the camera. This method capture the user choice (rock, paper or scissor) and will return the user choice as a string. It is based on getting the index with the higher value in the vector `prediction` and interpreting the choice that is linked to an specific position in the vector.
 
@@ -104,7 +115,7 @@ def get_prediction(self):
         return user_input
 ```
 
-### 4. Method 2: `get_computer_choice`
+### 5. Method 2: `get_computer_choice`
 
 This method uses the random module (see section 2) to pick a random value between rock, paper or scissors for the computer pick and returns that pick.
 
@@ -114,7 +125,7 @@ def get_computer_choice(self):
     print(computer_choice)
     return computer_choice
 ```
-### 4. Method 3: `get_winner`
+### 6. Method 3: `get_winner`
 
 This method takes as input both methods `get_prediction` and `get_computer_choice` and determines who is the winner.
 
@@ -131,7 +142,7 @@ This method takes as input both methods `get_prediction` and `get_computer_choic
             self.user_wins += 1
 ```
 
-### 4. The `play` function:
+### 7. The `play` function:
 
 This function calls the `get_winner` method from the Scoreboard class and adds as input the methods `get_computer_choice` and `get_prediction` so this will activate the camera for the user to show his choice, it will pick a random option for the computer and will compare the options to determine the winner.
 To keep the game running smoothly until wither the player or the computer scores 3 points, it uses a while loop that runs until one of the scores is equals to 3.
@@ -147,3 +158,4 @@ while True:
         print("You are the winner!")
         break
 ```
+
